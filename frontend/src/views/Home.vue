@@ -18,7 +18,7 @@
             View Appliances
           </RouterLink>
 
-          <RouterLink to="/request-quote" class="btn btn-primary">
+          <RouterLink to="/RequestQuote" class="btn btn-primary">
             Request a Quote
           </RouterLink>
         </div>

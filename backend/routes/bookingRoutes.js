@@ -140,34 +140,56 @@ router.post("/", async (req, res) => {
 
 
 // GET BOOKINGS
+// router.get("/", async (req, res) => {
+
+//   try {
+
+//     const [bookings] = await db.query(`
+//       SELECT
+//         bookings.*,
+//         appliances.name AS appliance_name,
+//         appliances.category AS appliance_category
+//       FROM bookings
+//       INNER JOIN appliances
+//         ON bookings.appliance_id = appliances.id
+//       ORDER BY bookings.created_at DESC
+//     `);
+
+
+//     res.json(bookings);
+
+//   } catch (error) {
+
+//     console.error("Get bookings error:", error);
+
+//     res.status(500).json({
+//       message: "Failed to load bookings.",
+//     });
+
+//   }
+
+// });
+
+
+// GET ALL BOOKINGS
 router.get("/", async (req, res) => {
+    try {
 
-  try {
+        const [rows] = await db.query(
+            "SELECT * FROM bookings ORDER BY id DESC"
+        );
 
-    const [bookings] = await db.query(`
-      SELECT
-        bookings.*,
-        appliances.name AS appliance_name,
-        appliances.category AS appliance_category
-      FROM bookings
-      INNER JOIN appliances
-        ON bookings.appliance_id = appliances.id
-      ORDER BY bookings.created_at DESC
-    `);
+        res.json(rows);
 
+    } catch (error) {
 
-    res.json(bookings);
+        console.error("BOOKING DATABASE ERROR:", error);
 
-  } catch (error) {
-
-    console.error("Get bookings error:", error);
-
-    res.status(500).json({
-      message: "Failed to load bookings.",
-    });
-
-  }
-
+        res.status(500).json({
+            message: "Failed to retrieve bookings",
+            error: error.message
+        });
+    }
 });
 
 

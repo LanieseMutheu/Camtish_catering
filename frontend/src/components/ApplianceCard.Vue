@@ -19,10 +19,15 @@ const emit = defineEmits([
 
     <div class="appliance-image">
 
-      <img
+      <!-- <img
       :src="appliance.image"
       :alt="appliance.name"
-      >
+      > -->
+      <img 
+      :src="getImageUrl(appliance.image)" 
+      :alt="appliance.name" 
+      class="appliance-image" 
+    />
 
       </div>
     <div class="appliance-info">
@@ -47,9 +52,11 @@ const emit = defineEmits([
             From
           </small>
 
-          <strong>
+          <!-- <strong>
             KSh {{ appliance.price }}
-          </strong>
+          </strong> -->
+
+          <strong>KSh {{ formattedPrice }}</strong>
 
           <small>
             /event
