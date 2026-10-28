@@ -1,0 +1,23 @@
+{
+  "name": "dacado_catering",
+  "version": "1.0.0",
+  "description": "This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "concurrently \"npm --prefix backend run dev\" \"npm --prefix frontend run dev\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LanieseMutheu/Camtish_catering.git"
+  },
+  "keywords": [],
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/LanieseMutheu/Camtish_catering/issues"
+  },
+  "homepage": "https://github.com/LanieseMutheu/Camtish_catering#readme",
+  "devDependencies": {
+    "concurrently": "^10.0.6"
+  }
+}

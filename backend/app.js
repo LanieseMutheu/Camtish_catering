@@ -1,10 +1,11 @@
+require('dotenv').config()
 const express = require("express");
 const cors = require("cors");
 
 // Import routes
 const applianceRoutes = require("./routes/applianceRoutes");
 const bookingRoutes = require("./routes/bookingRoutes");
-
+const authRoutes = require('./routes/authRoutes')
 const app = express();
 
 // ===============================
@@ -45,7 +46,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/appliances", applianceRoutes);
 app.use("/api/bookings", bookingRoutes);
-
+app.use("/api/auth", authRoutes)
 // ===============================
 // ERROR HANDLER
 // ===============================

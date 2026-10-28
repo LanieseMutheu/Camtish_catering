@@ -10,7 +10,6 @@ defineProps({
 const emit = defineEmits([
   'add'
 ])
-
 </script>
 
 <template>

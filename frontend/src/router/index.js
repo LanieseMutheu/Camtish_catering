@@ -43,4 +43,29 @@ const router = createRouter({
   routes
 })
 
+
+router.beforeEach((to, from, next) => {
+  // Only guard the /admin route
+  if (to.path === '/adminDasboard') {
+    const token = localStorage.getItem('token')
+    const user = JSON.parse(localStorage.getItem('user') || 'null')
+
+    // Not logged in, or not admin → send to login
+    if (!token || !user || user.role !== 'admin') {
+      return next('/Login')
+    }
+  }
+
+  // Already logged in as admin → visiting /Login should redirect to /admin
+  if (to.path === '/Login') {
+    const token = localStorage.getItem('token')
+    const user = JSON.parse(localStorage.getItem('user') || 'null')
+    if (token && user?.role === 'admin') {
+      return next('/adminDashboard')
+    }
+  }
+
+  next()
+})
+
 export default router
